@@ -220,6 +220,7 @@ def run_gavrptw(instance_name, unit_cost, init_cost, wait_cost, delay_cost, ind_
     print(f'Best individual: {best_ind}')
     print(f'Fitness: {best_ind.fitness.values[0]}')
     print_route(ind2route(best_ind, instance))
+    r = ind2route(best_ind, instance)
     print(f'Total cost: {1 / best_ind.fitness.values[0]}')
     if export_csv:
         csv_file_name = f'{instance_name}_uC{unit_cost}_iC{init_cost}_wC{wait_cost}' \
@@ -241,3 +242,4 @@ def run_gavrptw(instance_name, unit_cost, init_cost, wait_cost, delay_cost, ind_
                 writer.writeheader()
                 for csv_row in csv_data:
                     writer.writerow(csv_row)
+    return r
